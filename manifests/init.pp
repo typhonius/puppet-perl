@@ -18,7 +18,7 @@ class perl {
       require => Exec['plenv-setup-root-repo'] ;
 
     "${boxen::config::envdir}/plenv.sh":
-      source  => 'puppet://modules/perl/plenv.sh' ;
+      source  => 'puppet:///modules/perl/plenv.sh' ;
   }
 
   $git_init   = 'git init .'
