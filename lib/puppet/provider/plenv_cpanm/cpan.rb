@@ -21,6 +21,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
       "#{@resource[:plenv_root]}/bin/plenv exec #{command}",
     ]
 
+    output = `#{full_command}`
     [ output, $? ]
   end
 
