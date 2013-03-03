@@ -35,7 +35,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
 
   def exists?
     ret = plenv_command "perl -M#{@resource[:cpan]} -e 'exit 0'"
-    return ( ret[0] == 0 ) ? true : false ;
+    return ( ret[1] == 0 ) ? true : false ;
   end
 
 end
