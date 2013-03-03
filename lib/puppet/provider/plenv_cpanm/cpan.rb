@@ -19,7 +19,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
       "PLENV_VERSION=#{@resource[:plenv_version]}",
       "PLENV_HOME=#{@resource[:plenv_root]}",
       "#{@resource[:plenv_root]}/bin/plenv exec #{command}",
-    ]
+    ].join(' ')
 
     output = `#{full_command}`
     [ output, $? ]
