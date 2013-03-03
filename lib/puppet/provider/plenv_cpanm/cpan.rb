@@ -8,7 +8,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
     [
       "#{@resource[:plenv_root]}/bin",
       "#{@resource[:plenv_root]}/shims",
-      "#{Factor[:boxen_home].value}/homebrew/bin",
+      "#{Facter[:boxen_home].value}/homebrew/bin",
     ].join(':')
   end
 
