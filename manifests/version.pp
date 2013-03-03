@@ -29,7 +29,7 @@ define perl::version(
 
     Exec["perl-install-${version}"] {}
 
-    perl::cpanm {
+    perl::cpan {
       "cpanm for ${version}":
         cpan => 'App::cpanminus',
         perl => $version ;
