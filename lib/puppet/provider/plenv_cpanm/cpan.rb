@@ -14,7 +14,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
 
   def plenv_command(command)
     full_command = [
-      "sudo -u #{Factor[:luser].value}",
+      "sudo -u #{Facter[:luser].value}",
       "PATH=#{path}",
       "PLENV_VERSION=#{@resource[:plenv_version]}",
       "PLENV_HOME=#{@resource[:plenv_root]}",
