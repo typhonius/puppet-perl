@@ -18,10 +18,8 @@ define perl::version(
       undef   => '-Dusethreads',
       default => $configure,
     }
-  
-    $env = [
-      "PLENV_HOME=${perl::root}",
-    ]
+
+    $env = [ "PLENV_HOME=${perl::root}" ]
 
     exec { "perl-install-${version}":
       command  => "${perl::root}/bin/plenv install ${version} ${opts}",
@@ -35,10 +33,10 @@ define perl::version(
 
     perl::cpan {
       "carton for ${version}":
-        cpan => "Carton",
+        cpan => 'Carton',
         perl => $version ;
       "pm-uninstall for ${version}":
-        cpan => "App::pmuninsetall",
+        cpan => 'App::pmuninsetall',
         perl => $version ;
     }
   }
