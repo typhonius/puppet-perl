@@ -12,7 +12,8 @@ class perl {
       ensure => directory ;
 
     [
-      "${root}/shims"
+      "${root}/shims",
+      "${root}/versions",
     ]:
       ensure  => directory,
       require => Exec['plenv-setup-root-repo'] ;
@@ -34,9 +35,21 @@ class perl {
   }
 
   exec { "ensure-plenv-version-${plenv_version}":
-    command => "${git_fetch} && git reset --hard ${plenv_version}",
+    command => "${git_fetch} && ${git_reset}",
     unless  => "git describe --tags --exact-match `git rev-parse HEAD` | grep ${plenv_version}",
     cwd     => $root,
     require => Exec['plenv-setup-root-repo']
+  }
+
+  exec { "plenv-install-cpanm":
+    command => "PLENV_HOME=${root} ${root}/bin/plenv install-cpanm"
+    unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpanm",
+    require => Exec["ensure-plenv-version-${plenv_version}"],
+  }
+
+  exec { "plenv-rehash-post-install":
+    command => "/bin/rm -rf ${root}/shims && PLENV_HOME=${root} ${root}/bin/plenv rehash",
+    unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpan",
+    require => Exec["ensure-plenv-version^${plenv_version}"],
   }
 }
