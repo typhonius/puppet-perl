@@ -3,7 +3,7 @@ class perl {
   include homebrew
 
   $root = "${boxen::config::home}/plenv"
-  $plenv_version = '1.4.2'
+  $plenv_version = '1.4.9'
 
   package { 'plenv': ensure => absent; }
 

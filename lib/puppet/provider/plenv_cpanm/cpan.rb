@@ -34,7 +34,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
   end
 
   def exists?
-    ret = plenv_command "perl -M#{@resource[:cpan]} -e 'exit 0'"
+    ret = plenv_command "perl -MExtUtils::Installed -e 'exit(scalar(grep { $_ eq q{#{@resource[:cpan]}} } ExtUtils::Installed->new->modules()) ? 0 : 1 )'"
     return ( ret[1] == 0 ) ? true : false ;
   end
 
