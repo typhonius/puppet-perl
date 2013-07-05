@@ -6,6 +6,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
 
   def path
     [
+      "/bin",
       "/usr/bin",
       "#{@resource[:plenv_root]}/bin",
       "#{@resource[:plenv_root]}/shims",
