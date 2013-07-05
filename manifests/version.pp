@@ -31,6 +31,12 @@ define perl::version(
 
     Exec["perl-install-${version}"] { environment +> $env }
 
+   exec { 'plenv-install-cpanm':
+      command => "env PLENV_ROOT=${root} ${root}/bin/plenv install-cpanm",
+      unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpanm",
+      require => Exec["perl-install-${version}"],
+   }
+
     perl::cpan {
       "carton for ${version}":
         cpan => 'Carton',

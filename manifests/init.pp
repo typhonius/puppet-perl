@@ -48,12 +48,6 @@ class perl {
     require => Exec['plenv-install-perl-build']
   }
 
-  exec { 'plenv-install-cpanm':
-    command => "env PLENV_ROOT=${root} ${root}/bin/plenv install-cpanm",
-    unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpanm",
-    require => Exec["plenv-rehash-post-install"],
-  }
-
   exec { 'plenv-rehash-post-install':
     command => "/bin/rm -rf ${root}/shims && PLENV_ROOT=${root} ${root}/bin/plenv rehash",
     unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpan",
