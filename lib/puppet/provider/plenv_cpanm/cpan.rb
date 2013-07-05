@@ -17,7 +17,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
       "sudo -u #{Facter[:luser].value}",
       "PATH=#{path}",
       "PLENV_VERSION=#{@resource[:plenv_version]}",
-      "PLENV_HOME=#{@resource[:plenv_root]}",
+      "PLENV_ROOT=#{@resource[:plenv_root]}",
       "#{@resource[:plenv_root]}/bin/plenv exec #{command}",
     ].join(' ')
 
