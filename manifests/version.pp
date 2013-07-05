@@ -19,7 +19,7 @@ define perl::version(
       default => $configure,
     }
 
-    $env = [ "PLENV_HOME=${perl::root}" ]
+    $env = [ "PLENV_ROOT=${perl::root}" ]
 
     exec { "perl-install-${version}":
       command  => "${perl::root}/bin/plenv install ${version} ${opts}",

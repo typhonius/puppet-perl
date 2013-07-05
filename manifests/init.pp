@@ -48,7 +48,7 @@ class perl {
   }
 
   exec { 'plenv-rehash-post-install':
-    command => "/bin/rm -rf ${root}/shims && PLENV_HOME=${root} ${root}/bin/plenv rehash",
+    command => "/bin/rm -rf ${root}/shims && PLENV_ROOT=${root} ${root}/bin/plenv rehash",
     unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpan",
     require => Exec["ensure-plenv-version-${plenv_version}"],
   }
