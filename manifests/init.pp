@@ -44,7 +44,7 @@ class perl {
   exec { 'plenv-install-cpanm':
     command => "env PLENV_ROOT=${root} ${root}/bin/plenv install-cpanm",
     unless  => "grep /opt/boxen/plenv/bin/plenv ${root}/shims/cpanm",
-    require => Exec["ensure-plenv-version-${plenv_version}"],
+    require => Exec["plenv-rehash-post-install"],
   }
 
   exec { 'plenv-rehash-post-install':
