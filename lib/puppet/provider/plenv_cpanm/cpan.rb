@@ -6,7 +6,7 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpan) do
 
   def path
     [
-      "/usr/bin"
+      "/usr/bin",
       "#{@resource[:plenv_root]}/bin",
       "#{@resource[:plenv_root]}/shims",
       "#{Facter[:boxen_home].value}/homebrew/bin",
