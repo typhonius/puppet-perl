@@ -35,9 +35,9 @@ class perl {
   }
 
   exec { 'plenv-install-perl-build':
-    command => "git clone https://github.com/tokuhirom/Perl-Build.git ${root}/plugins/perl-build/"
+    command => "git clone https://github.com/tokuhirom/Perl-Build.git ${root}/plugins/perl-build/",
     cwd     => $root,
-    creates => "${root}/plugins/perl-build/bin/perl-build"
+    creates => "${root}/plugins/perl-build/bin/perl-build",
     require => Exec['plenv-setup-root-repo']
   }
 
