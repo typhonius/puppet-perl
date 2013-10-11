@@ -1,4 +1,4 @@
-Puppet::Type.newyu@e(:plenv_cpanm) do
+Puppet::Type.newtype(:plenv_cpanm) do
   @doc = ""
 
   ensurable do

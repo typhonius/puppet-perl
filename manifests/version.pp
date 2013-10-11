@@ -17,12 +17,12 @@ define perl::version(
       require xquartz
 
       $os_env = {
-        'CFLAGS' => '-I/opt/X11/include'  
+        'CFLAGS' => '-I/opt/X11/include'
       }
     }
 
     default: {
-      $os_env = {}    
+      $os_env = {}
     }
   }
 
@@ -43,8 +43,8 @@ define perl::version(
 
     exec { "perl-install-${version}":
       command  => "${perl::plenv_root}/bin/plenv install ${version} ${configure}",
-      cwd      => "${perl::plenv_root}/versions/".
-      provider => "shell",
+      cwd      => "${perl::plenv_root}/versions",
+      provider => 'shell',
       timeout  => 0,
       creates  => $dest,
       user     => $perl::user,
@@ -64,7 +64,7 @@ define perl::version(
     }
 
     Exec["perl-install-${version}"] {
-      environment +> sort(join_keys_to_values($final_env, '='))    
+      environment +> sort(join_keys_to_values($final_env, '='))
     }
   }
 }

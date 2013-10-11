@@ -16,12 +16,10 @@ class perl::params {
 
   $plenv_version  = '2.1.1'
 
-  $default_cpanm  = ['Carton']
-
   $plenv_plugins  = {
     'perl-build' => {
-      'ensure' => '1.05'
+      'ensure' => '1.05',
       'source' => 'tokuhirom/Perl-Build'
-    }    
+    }
   }
 }

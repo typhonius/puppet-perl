@@ -6,7 +6,7 @@
 #       module => 'Carton',
 #       perl   => '5.18.1',
 #     }
-define perl::cpanm( $module, $perl, $ensure => 'present' ) {
+define perl::cpanm( $module, $perl, $ensure = 'present' ) {
   require perl
 
   plenv_cpanm { $name:

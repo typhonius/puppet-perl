@@ -1,23 +1,43 @@
-# Template Puppet Module for Boxen
+# Perl Puppet Module for Boxen
 
-An example of how we write Puppet modules for Boxen. Replace this
-paragraph with a short explanation of what the heck makes your module
-useful.
+[![Build Status](https://travis-ci.org/boxen/puppet-template.png?branch=master)](https://travis-ci.org/boxen/puppet-template)
+
+use Perl with [plenv](https://github.com/tokuhirom/plenv)!
 
 ## Usage
 
 ```puppet
-boxen::example { 'best example ever':
-  salutation => 'fam'
+# Set the global default perl (auto installs it if it can)
+class { 'perl::global':
+  version => '5.18.1'
+}
+
+# ensure a certain perl version is used in a dir
+perl::local { '/path/to/some/project':
+  version => '5.8.9'
+}
+
+# ensure a CPAN module is installed for a certain perl version
+# NOTE: you can't have duplicate resource name so you have to name like  so
+$version = '5.18.1'
+perl::cpanm { "carton for ${version}":
+  module => 'Carton',
+  perl   => $version
+}
+
+# install a perl version
+perl::version { '5.18.1' }
+
+# install plenv plugin
+perl::plugin { 'plenv-contrib':
+  ensure => present,
+  source => 'miyagawa/plenv-contrib'
 }
 ```
 
 ## Required Puppet Modules
 
 * `boxen`
-* `anything-else`
+* `repository >= 2.1`
+* `xquartz` (OSX only)
 
-## Development
-
-Write code. Run `script/cibuild` to test it. Check the `script`
-directory for other useful tools.

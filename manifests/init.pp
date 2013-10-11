@@ -8,7 +8,7 @@ class perl(
   $plenv_root    = $perl::params::plenv_root,
   $user          = $perl::params::user
 ) inherits perl::params {
-  
+
   if $::osfamily == 'Darwin' {
     include boxen::config
 
@@ -18,9 +18,9 @@ class perl(
   }
 
   repository { $plenv_root:
-    ensure => $plenv_version,
-    source => 'tokuhirom/plenv',
-    user   => $user
+    ensure   => $plenv_version,
+    source   => 'tokuhiron/plenv',
+    user     => $user
   }
 
   file {

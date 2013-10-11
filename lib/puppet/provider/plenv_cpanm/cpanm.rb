@@ -40,4 +40,5 @@ Puppet::Type.type(:plenv_cpanm).provide(:cpanm) do
     filename = @resource[:module].gsub(/::/, "/")
 
     return Dir.glob("#{root}/**/#{filename}.pm").length > 0
+  end
 end
