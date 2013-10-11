@@ -1,6 +1,6 @@
 # Perl Puppet Module for Boxen
 
-[![Build Status](https://travis-ci.org/boxen/puppet-template.png?branch=master)](https://travis-ci.org/boxen/puppet-template)
+[![Build Status](https://travis-ci.org/boxelly/puppet-perl.png?branch=master)](https://travis-ci.org/boxelly/puppet-perl)
 
 use Perl with [plenv](https://github.com/tokuhirom/plenv)!
 
