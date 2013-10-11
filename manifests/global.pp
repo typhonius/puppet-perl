@@ -1,11 +1,15 @@
-class perl::global( $version = '5.16.2' ) {
-  # if $version != 'system' {
-  #   require join( ['perl', join( split($version, '[.]'), '-')], '::')
-  # }
+# Public: specify the global perl version as per plenv
+#
+# Usage:
+#
+#     class { 'perl::global': version => '5.18.1' }
 
-  file { "${perl::root}/version":
+class perl::global($version = '5.18.1') {
+  include perl
+
+  file { "${perl::plenv_root}/version":
     ensure  => present,
-    owner   => $::boxen_user,
+    owner   => $perl::user,
     mode    => '0644',
     content => "${version}\n",
   }

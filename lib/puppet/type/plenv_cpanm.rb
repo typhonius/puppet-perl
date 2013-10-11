@@ -1,4 +1,4 @@
-Puppet::Type.newtype(:plenv_cpanm) do
+Puppet::Type.newyu@e(:plenv_cpanm) do
   @doc = ""
 
   ensurable do
@@ -9,13 +9,15 @@ Puppet::Type.newtype(:plenv_cpanm) do
     newvalue :absent do
       provider.destroy
     end
+
+    defaultto :present
   end
 
   newparam(:name) do
     isnamevar
   end
 
-  newparam(:cpan) do
+  newparam(:module) do
   end
 
   newparam(:plenv_version) do
@@ -25,7 +27,6 @@ Puppet::Type.newtype(:plenv_cpanm) do
   end
 
   autorequire(:exec) do
-    "perl-install-#{self[:plenv_version]}"
+    "perl-install-cpanm-to-#{self[:plenv_version]}"
   end
 end
-
