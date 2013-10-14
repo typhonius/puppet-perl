@@ -51,7 +51,7 @@ define perl::version(
     }
     ->
     exec { "perl-install-cpanm-to-${version}":
-      command  => "curl -o ${dest}/bin/cpanm http://cpanmin.us/",
+      command  => "curl -L -o ${dest}/bin/cpanm http://cpanmin.us/",
       cwd      => $dest,
       timeout  => 0,
       creates  => "${dest}/bin/cpanm",
