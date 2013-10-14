@@ -19,7 +19,7 @@ class perl(
 
   repository { $plenv_root:
     ensure   => $plenv_version,
-    source   => 'tokuhiron/plenv',
+    source   => 'tokuhirom/plenv',
     user     => $user
   }
 
