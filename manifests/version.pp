@@ -62,6 +62,13 @@ define perl::version(
       owner    => $perl::user,
       mode     => '0755',
     }
+    -> 
+    exec { "perl-reinstall-cpanm-to-${version}":
+      command  => "${dest}/bin/cpanm App::cpanminus",
+      cwd      => $dest,
+      timeout  => 0,
+      user     => $perl::user,
+    }
     ->
     exec { "perl-rehash-on-${version}":
       command  => "${perl::plenv_root}/bin/plenv rehash",
