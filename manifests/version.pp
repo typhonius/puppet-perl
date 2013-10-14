@@ -62,7 +62,7 @@ define perl::version(
       owner    => $perl::user,
       mode     => '0755',
     }
-    -> 
+    ->
     exec { "perl-reinstall-cpanm-to-${version}":
       command  => "${dest}/bin/cpanm App::cpanminus",
       cwd      => $dest,
