@@ -53,6 +53,7 @@ define perl::version(
     exec { "perl-install-cpanm-to-${version}":
       command  => "${perl::plenv_root}/bin/plenv install-cpanm",
       cwd      => $dest,
+      provider => 'shell',
       timeout  => 0,
       creates  => "${perl::plenv_root}/shims/cpanm",
       user     => $perl::user,
