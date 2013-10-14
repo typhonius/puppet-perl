@@ -51,7 +51,7 @@ define perl::version(
     }
     ->
     exec { "perl-install-cpanm-to-${version}":
-      command  => "${perl::plenv_root}/bin/plenv install-cpanm",
+      command  => "bash -c ${perl::plenv_root}/libexec/plenv-install-cpanm",
       cwd      => $dest,
       provider => 'shell',
       timeout  => 0,
