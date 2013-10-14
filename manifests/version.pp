@@ -51,11 +51,25 @@ define perl::version(
     }
     ->
     exec { "perl-install-cpanm-to-${version}":
-      command  => "bash -c ${perl::plenv_root}/bin/plenv install-cpanm",
+      command  => "curl -o ${dest}/bin/cpanm http://cpanmin.us/",
       cwd      => $dest,
       timeout  => 0,
-      creates  => "${perl::plenv_root}/shims/cpanm",
+      creates  => "${dest}/bin/cpanm",
       user     => $perl::user,
+    }
+    ->
+    file { "${dest}/bin/cpanm":
+      owner    => $perl::user,
+      mode     => '0755',
+    }
+    ->
+    exec { "perl-rehash-on-${version}":
+      command  => "${perl::plenv_root}/bin/plenv rehash",
+      cwd      => $perl::plenv_root,
+      provider => 'shell',
+      timeout  => 0,
+      creates  => "${dest}/shims/cpanm",
+      user     => $perl::user
     }
     ->
     perl::cpanm { "carton for ${version}":
