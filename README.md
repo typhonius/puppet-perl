@@ -26,7 +26,7 @@ perl::cpanm { "carton for ${version}":
 }
 
 # install a perl version
-perl::version { '5.18.1' }
+perl::version { '5.18.1': }
 
 # install plenv plugin
 perl::plugin { 'plenv-contrib':
