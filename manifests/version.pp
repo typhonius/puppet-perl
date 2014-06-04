@@ -70,6 +70,8 @@ define perl::version(
       user     => $perl::user,
     }
     ->
+    notify {"perl root is ${perl::plenv_root}":}->
+    notify {"perl user is ${perl::user}":}->
     exec { "perl-rehash-on-${version}":
       command  => "${perl::plenv_root}/bin/plenv rehash",
       cwd      => $perl::plenv_root,
