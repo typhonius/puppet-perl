@@ -75,7 +75,7 @@ define perl::version(
       cwd      => $perl::plenv_root,
       provider => 'shell',
       timeout  => 0,
-      creates  => "${dest}/shims/cpanm",
+      creates  => "${perl::plenv_root}/shims/cpanm",
       user     => $perl::user
     }
     ->
